@@ -1,65 +1,66 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Genealogy Tree Checker</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Friendly Genealogy helps families organize, review, and preserve their family stories.">
+  <title>Friendly Genealogy | Bring Your Family Story Together</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>🌳 Genealogy Tree Checker</h1>
-      <p>Review and manage your family tree</p>
-    </header>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Friendly Genealogy home"><span class="brand-mark">FG</span><span>Friendly<br><strong>Genealogy</strong></span></a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+      <a href="#services">Services</a><a href="#how-it-works">How it works</a><a href="#about">About</a><a href="#contact">Get started</a>
+    </nav>
+  </header>
 
-    <main>
-      <section class="form-section">
-        <h2>Add Family Member</h2>
-        <form id="familyForm">
-          <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" id="name" placeholder="Enter name" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="relation">Relation:</label>
-            <select id="relation" required>
-              <option value="">Select relation</option>
-              <option value="Parent">Parent</option>
-              <option value="Sibling">Sibling</option>
-              <option value="Child">Child</option>
-              <option value="Grandparent">Grandparent</option>
-              <option value="Grandchild">Grandchild</option>
-              <option value="Spouse">Spouse</option>
-              <option value="Cousin">Cousin</option>
-              <option value="Aunt/Uncle">Aunt/Uncle</option>
-              <option value="Niece/Nephew">Niece/Nephew</option>
-            </select>
-          </div>
-          
-          <div class="form-group">
-            <label for="birthYear">Birth Year:</label>
-            <input type="number" id="birthYear" placeholder="e.g., 1980" min="1900" max="2026">
-          </div>
-          
-          <button type="submit" class="btn-add">Add Member</button>
-        </form>
-      </section>
+  <main id="main">
+    <section id="top" class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Family history, made approachable</p>
+        <h1>Every family story deserves a clear place to grow.</h1>
+        <p class="lede">Friendly Genealogy helps you turn scattered names, records, and memories into a family history you can understand, care for, and share.</p>
+        <div class="actions"><a class="button button-primary" href="https://www.fixyourtree.com">Start your tree review</a><a class="button button-secondary" href="#services">Explore services</a></div>
+        <p class="assurance">Your family information stays in your control.</p>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="sun"></div><div class="hill hill-one"></div><div class="hill hill-two"></div>
+        <div class="tree"><i></i><i></i><i></i><b></b></div>
+        <div class="roots"><span></span><span></span><span></span></div>
+      </div>
+    </section>
 
-      <section class="tree-section">
-        <h2>Family Tree</h2>
-        <div id="familyTree" class="family-tree">
-          <p class="empty-message">No family members added yet. Start by adding someone!</p>
-        </div>
-      </section>
-    </main>
+    <section class="intro section"><p class="eyebrow">A warmer way to begin</p><h2>Start where you are.</h2><p>Whether you have a GEDCOM file, a folder of records, or simply a few names you want to preserve, you do not have to know every answer before you begin.</p></section>
 
-    <footer>
-      <p>© 2026 Genealogy Tree Checker | Built with ❤️</p>
-    </footer>
-  </div>
+    <section id="services" class="section services">
+      <div class="section-heading"><p class="eyebrow">What we help with</p><h2>Practical support for the work of remembering.</h2></div>
+      <div class="card-grid">
+        <article class="service-card"><span class="number">01</span><h3>Tree review &amp; cleanup</h3><p>Upload your family file, review possible duplicates and missing details, and work through clear next steps at your own pace.</p><a href="https://www.fixyourtree.com">Review a family tree</a></article>
+        <article class="service-card"><span class="number">02</span><h3>Research guidance</h3><p>Find a thoughtful place to organize questions, save discoveries, and decide what record or branch to explore next.</p><a href="https://www.fixyourtree.com">Explore your next steps</a></article>
+        <article class="service-card"><span class="number">03</span><h3>Stories &amp; keepsakes</h3><p>Turn the people and connections you uncover into a family record designed to revisit and share.</p><a href="https://www.fixyourtree.com">See family keepsakes</a></article>
+      </div>
+    </section>
 
+    <section id="how-it-works" class="section process">
+      <div><p class="eyebrow">A clear path forward</p><h2>Small steps. A stronger family record.</h2><p>Friendly Genealogy is designed to keep the process understandable, even when family history feels complicated.</p></div>
+      <ol>
+        <li><span>1</span><div><h3>Bring what you have</h3><p>Begin with a family file, existing notes, or the first people you want to record.</p></div></li>
+        <li><span>2</span><div><h3>See the connections</h3><p>Review a focused family-tree view before making decisions about the records.</p></div></li>
+        <li><span>3</span><div><h3>Work through the details</h3><p>Use guided review to correct, save for later, or continue researching each item.</p></div></li>
+        <li><span>4</span><div><h3>Keep the story close</h3><p>Return to your progress and preserve the discoveries worth sharing.</p></div></li>
+      </ol>
+    </section>
+
+    <section class="section feature"><div class="feature-panel"><p class="eyebrow">Designed for real families</p><h2>Clear guidance without losing the human story.</h2><p>Family history is more than dates and charts. It is the relationships, questions, and memories behind every name. Our tools make room for both.</p><ul><li>Plain-language review steps</li><li>Progress saved with your family tree</li><li>A private, browser-based workspace</li></ul></div><blockquote>“The goal is not a perfect tree. It is a family story you can return to with confidence.”</blockquote></section>
+
+    <section id="about" class="section about"><p class="eyebrow">About Friendly Genealogy</p><h2>Built for people who want to care for their family history.</h2><p>We believe genealogy should feel welcoming. Friendly Genealogy combines practical tools with a patient, people-first approach, helping you make sense of what you have and choose the next meaningful step.</p></section>
+
+    <section id="contact" class="section contact"><p class="eyebrow">Begin your next chapter</p><h2>Ready to bring your family story together?</h2><p>Open your private family-tree workspace to upload a file, review a tree, and begin with the details that matter most.</p><a class="button button-primary" href="https://www.fixyourtree.com">Open the family-tree workspace</a></section>
+  </main>
+  <footer><a class="brand" href="#top"><span class="brand-mark">FG</span><span>Friendly<br><strong>Genealogy</strong></span></a><p>Family history, made approachable.</p><p>© 2026 Friendly Genealogy</p></footer>
   <script src="script.js"></script>
 </body>
 </html>
