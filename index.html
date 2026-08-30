@@ -3,63 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Genealogy Tree Checker</title>
+  <meta name="description" content="Bring your family story into focus with Fix Your Tree.">
+  <title>Fix Your Tree — Make every branch count</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>🌳 Genealogy Tree Checker</h1>
-      <p>Review and manage your family tree</p>
-    </header>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Fix Your Tree home"><span class="brand-mark">F</span> Fix Your Tree</a>
+    <nav aria-label="Main navigation"><a href="#how-it-works">How it works</a><a href="#tree-workspace">Your tree</a></nav>
+    <a class="button button-small" href="#tree-workspace">Start your tree</a>
+  </header>
 
-    <main>
-      <section class="form-section">
-        <h2>Add Family Member</h2>
-        <form id="familyForm">
-          <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" id="name" placeholder="Enter name" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="relation">Relation:</label>
-            <select id="relation" required>
-              <option value="">Select relation</option>
-              <option value="Parent">Parent</option>
-              <option value="Sibling">Sibling</option>
-              <option value="Child">Child</option>
-              <option value="Grandparent">Grandparent</option>
-              <option value="Grandchild">Grandchild</option>
-              <option value="Spouse">Spouse</option>
-              <option value="Cousin">Cousin</option>
-              <option value="Aunt/Uncle">Aunt/Uncle</option>
-              <option value="Niece/Nephew">Niece/Nephew</option>
-            </select>
-          </div>
-          
-          <div class="form-group">
-            <label for="birthYear">Birth Year:</label>
-            <input type="number" id="birthYear" placeholder="e.g., 1980" min="1900" max="2026">
-          </div>
-          
-          <button type="submit" class="btn-add">Add Member</button>
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Your family story, beautifully organized</p>
+        <h1>Every family has a story worth <em>keeping.</em></h1>
+        <p class="hero-text">Collect the people, relationships, and moments that make up your family — then keep building from there.</p>
+        <div class="hero-actions"><a class="button" href="#tree-workspace">Build your tree <span aria-hidden="true">→</span></a><a class="text-link" href="#how-it-works">See how it works</a></div>
+        <div class="trust-row"><span class="avatars" aria-hidden="true"><i>J</i><i>M</i><i>A</i></span><span>Made for the stories you share</span></div>
+      </div>
+      <div class="hero-art" aria-label="Decorative family tree illustration">
+        <div class="sun"></div><div class="hill hill-one"></div><div class="hill hill-two"></div>
+        <div class="tree"><span class="branch branch-one"></span><span class="branch branch-two"></span><span class="branch branch-three"></span><span class="leaf leaf-one"></span><span class="leaf leaf-two"></span><span class="leaf leaf-three"></span><span class="leaf leaf-four"></span><span class="leaf leaf-five"></span></div>
+        <div class="art-card"><span>Family roots</span><strong>Past, present &amp; future</strong></div>
+      </div>
+    </section>
+
+    <section class="steps" id="how-it-works">
+      <p class="eyebrow">A simpler way to begin</p>
+      <div class="section-heading"><h2>Start with one person.<br>Let the story grow.</h2><p>No complicated setup. Add the people you know today and return whenever you uncover another piece of the picture.</p></div>
+      <div class="step-grid"><article><span>01</span><h3>Begin a branch</h3><p>Add yourself, a parent, or anyone at the heart of the story.</p></article><article><span>02</span><h3>Connect the dots</h3><p>Capture relationships and the details that make each person memorable.</p></article><article><span>03</span><h3>Keep discovering</h3><p>Your living family record is ready for every new find.</p></article></div>
+    </section>
+
+    <section class="workspace" id="tree-workspace">
+      <div class="workspace-intro"><p class="eyebrow">Your family workspace</p><h2>Build your first branch.</h2><p>Add someone important. This private demo saves your entries in this browser.</p></div>
+      <div class="workspace-grid">
+        <form id="familyForm" class="member-form">
+          <div class="form-heading"><span class="form-icon">+</span><div><h3>Add a family member</h3><p>Every person helps complete the picture.</p></div></div>
+          <label for="name">Full name</label><input type="text" id="name" placeholder="e.g. Eleanor Williams" required>
+          <div class="field-row"><div><label for="relation">Relationship</label><select id="relation" required><option value="">Choose one</option><option>Parent</option><option>Sibling</option><option>Child</option><option>Grandparent</option><option>Grandchild</option><option>Spouse</option><option>Cousin</option><option>Aunt / Uncle</option><option>Niece / Nephew</option></select></div><div><label for="birthYear">Born</label><input type="number" id="birthYear" placeholder="Year" min="1800" max="2026"></div></div>
+          <button type="submit" class="button form-button">Add to my tree <span aria-hidden="true">→</span></button>
         </form>
-      </section>
-
-      <section class="tree-section">
-        <h2>Family Tree</h2>
-        <div id="familyTree" class="family-tree">
-          <p class="empty-message">No family members added yet. Start by adding someone!</p>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <p>© 2026 Genealogy Tree Checker | Built with ❤️</p>
-    </footer>
-  </div>
-
+        <section class="tree-panel" aria-labelledby="tree-title"><div class="panel-head"><div><p class="panel-label">Your growing tree</p><h3 id="tree-title">Family members</h3></div><span id="memberCount" class="count">0 people</span></div><div id="familyTree" class="family-tree"><div class="empty-state"><div class="empty-tree">⌁</div><h4>Your story starts here</h4><p>Add your first family member to begin building your tree.</p></div></div></section>
+      </div>
+    </section>
+  </main>
+  <footer><a class="brand" href="#top"><span class="brand-mark">F</span> Fix Your Tree</a><p>Make every branch count.</p></footer>
   <script src="script.js"></script>
 </body>
 </html>

@@ -1,79 +1,32 @@
-// Load family members from localStorage
 let familyMembers = JSON.parse(localStorage.getItem('familyMembers')) || [];
-
-// DOM Elements
 const familyForm = document.getElementById('familyForm');
 const nameInput = document.getElementById('name');
 const relationInput = document.getElementById('relation');
 const birthYearInput = document.getElementById('birthYear');
 const familyTreeDiv = document.getElementById('familyTree');
+const memberCount = document.getElementById('memberCount');
 
-// Form submission
-familyForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  
-  const newMember = {
-    id: Date.now(),
-    name: nameInput.value.trim(),
-    relation: relationInput.value,
-    birthYear: birthYearInput.value || 'Unknown'
-  };
-  
-  if (newMember.name) {
-    familyMembers.push(newMember);
-    saveFamilyMembers();
-    renderFamilyTree();
-    familyForm.reset();
-    nameInput.focus();
-  }
+familyForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const member = { id: Date.now(), name: nameInput.value.trim(), relation: relationInput.value, birthYear: birthYearInput.value };
+  if (!member.name || !member.relation) return;
+  familyMembers.push(member);
+  saveFamilyMembers();
+  renderFamilyTree();
+  familyForm.reset();
+  nameInput.focus();
 });
 
-// Save to localStorage
-function saveFamilyMembers() {
-  localStorage.setItem('familyMembers', JSON.stringify(familyMembers));
-}
-
-// Render family tree
+function saveFamilyMembers() { localStorage.setItem('familyMembers', JSON.stringify(familyMembers)); }
+function initials(name) { return name.split(/\s+/).map((part) => part[0]).slice(0, 2).join('').toUpperCase(); }
+function escapeHtml(text) { return text.replace(/[&<>"']/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' })[character]); }
 function renderFamilyTree() {
-  if (familyMembers.length === 0) {
-    familyTreeDiv.innerHTML = '<p class="empty-message">No family members added yet. Start by adding someone!</p>';
+  memberCount.textContent = `${familyMembers.length} ${familyMembers.length === 1 ? 'person' : 'people'}`;
+  if (!familyMembers.length) {
+    familyTreeDiv.innerHTML = '<div class="empty-state"><div class="empty-tree">⌁</div><h4>Your story starts here</h4><p>Add your first family member to begin building your tree.</p></div>';
     return;
   }
-  
-  familyTreeDiv.innerHTML = familyMembers.map(member => `
-    <div class="family-member">
-      <div class="member-info">
-        <h3>${escapeHtml(member.name)}</h3>
-        <p><span class="relation-badge">${member.relation}</span></p>
-        <p><strong>Born:</strong> ${member.birthYear}</p>
-      </div>
-      <button class="btn-remove" onclick="removeMember(${member.id})">Remove</button>
-    </div>
-  `).join('');
+  familyTreeDiv.innerHTML = familyMembers.map((member) => `<article class="family-member"><span class="member-avatar">${initials(member.name)}</span><div class="member-info"><h4>${escapeHtml(member.name)}</h4><p>${escapeHtml(member.relation)}${member.birthYear ? ` <span>·</span> Born ${member.birthYear}` : ''}</p></div><button class="remove-button" type="button" aria-label="Remove ${escapeHtml(member.name)}" onclick="removeMember(${member.id})">×</button></article>`).join('');
 }
-
-// Remove member
-function removeMember(id) {
-  if (confirm('Are you sure you want to remove this family member?')) {
-    familyMembers = familyMembers.filter(member => member.id !== id);
-    saveFamilyMembers();
-    renderFamilyTree();
-  }
-}
-
-// Escape HTML to prevent XSS
-function escapeHtml(text) {
-  const map = {
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    '"': '&quot;',
-    "'": '&#039;'
-  };
-  return text.replace(/[&<>"']/g, m => map[m]);
-}
-
-// Initial render on page load
-document.addEventListener('DOMContentLoaded', () => {
-  renderFamilyTree();
-});
+function removeMember(id) { familyMembers = familyMembers.filter((member) => member.id !== id); saveFamilyMembers(); renderFamilyTree(); }
+renderFamilyTree();
